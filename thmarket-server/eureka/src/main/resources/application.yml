@@ -1,0 +1,14 @@
+server:
+   port: 9100
+   
+spring:
+   application:
+      name: thmarket-eureka-server
+   
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:${server.port}/eureka/
+      fetch-registry: false
+      register-with-eureka: false
+    
