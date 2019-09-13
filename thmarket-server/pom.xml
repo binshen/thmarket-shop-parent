@@ -12,8 +12,8 @@
     <artifactId>thmarket-server</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>eureka</module>
         <module>eureka-server</module>
+        <module>zuul-server</module>
     </modules>
 
 
