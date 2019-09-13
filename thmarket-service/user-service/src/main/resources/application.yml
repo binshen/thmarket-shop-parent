@@ -1,0 +1,22 @@
+server:
+   port: 9001
+  
+spring:
+   application:
+      name: thmarket-user-service
+
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:9100/eureka/
+      register-with-eureka: true
+      fetch-registry: true
+   instance:
+      prefer-ip-address: true
+      instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+app:
+   id: thmarket-user-service
+   
+apollo:
+   meta: http://localhost:8080
