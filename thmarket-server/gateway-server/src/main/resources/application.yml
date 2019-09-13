@@ -1,0 +1,28 @@
+server:
+   port: 9300
+  
+spring:
+   application:
+      name: thmarket-gateway-server
+   cloud:
+      gateway:
+         discovery:
+            locator:
+               enabled: false
+               lowerCaseServiceId: true
+            routes:
+               - id: thmarket-user-service
+                 uri: lb://THMARKET-USER-SERVICE
+                 predicates:
+                    - Path=/api/**
+                 filters:
+                    - StripPrefix=1
+
+
+eureka:
+   client:
+      service-url:
+         defaultZone: http://localhost:9100/eureka/
+   instance:
+      prefer-ip-address: true
+      instance-id: ${spring.cloud.client.ip-address}:${server.port}
