@@ -12,8 +12,15 @@ spring:
                lowerCaseServiceId: true
          routes:
             - id: thmarket-user-service
-              uri: http://localhost:9000/
+              uri: http://localhost:9000
               predicates:
                  - Path=/api/**
               filters:
                  - StripPrefix=1
+#                 - name: RateLimiter
+                 - name: Hystrix
+                   args:
+                      name: fallbackcmd
+                      fallbackUri: forward:/fallback
+
+#hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 5000
